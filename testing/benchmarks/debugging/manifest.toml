@@ -1,0 +1,19 @@
+# Benchmarks for debugging. Pin a version and an explicit task subset before running.
+
+[[benchmark]]
+name = "swe-bench-verified"
+source = "https://www.swebench.com"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently
+
+[[benchmark]]
+name = "swe-bench-pro"
+source = "TODO"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently
+
+[[benchmark]]
+name = "repodebug"
+source = "TODO"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently

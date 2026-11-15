@@ -1,0 +1,8 @@
+name = "ARISE"
+area = "debugging"
+paper = "https://arxiv.org/abs/2605.03117"
+repo_url = "https://github.com/FARD-Lab/ARISE"
+commit = "3abdc361ba2cb627b8c83c2493dafd1d7cc874dd"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "pinned"   # todo | pinned | reproduced | adapted
+role = "Multi-granularity program graph and def-use slicing; L1 schema reference."

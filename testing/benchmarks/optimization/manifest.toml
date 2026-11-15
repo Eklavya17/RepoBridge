@@ -1,0 +1,19 @@
+# Benchmarks for optimization. Pin a version and an explicit task subset before running.
+
+[[benchmark]]
+name = "swe-fficiency"
+source = "TODO"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently
+
+[[benchmark]]
+name = "swe-perf"
+source = "TODO"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently
+
+[[benchmark]]
+name = "formulacode"
+source = "TODO"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently

@@ -1,0 +1,8 @@
+name = "RepoAudit"
+area = "debugging"
+paper = "https://arxiv.org/abs/2501.18160"
+repo_url = "https://github.com/PurCL/RepoAudit"
+commit = "160f5bcd378a02a2417e32e999f93ef5fa0f5e64"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "pinned"   # todo | pinned | reproduced | adapted
+role = "Demand-driven auditing with memory and path validation; run A0 baseline."

@@ -1,0 +1,8 @@
+name = "Fray"
+area = "concurrency"
+paper = "TODO"
+repo_url = "https://github.com/cmu-pasta/fray"
+commit = "1fee772447d7c1c3f6a88df5ab20ffe378a6a297"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "pinned"   # todo | pinned | reproduced | adapted
+role = "Controlled concurrency testing for the JVM; schedule-aware verification."

@@ -1,0 +1,8 @@
+name = "LocAgent"
+area = "context"
+paper = "https://arxiv.org/abs/2503.09089"
+repo_url = "https://github.com/gersteinlab/LocAgent"
+commit = "4935b557326c154bad8e8dcf3747cc8d32d1f387"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "pinned"   # todo | pinned | reproduced | adapted
+role = "Heterogeneous code graph + multi-hop search tools; localization baseline for C1."

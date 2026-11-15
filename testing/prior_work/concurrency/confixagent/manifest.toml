@@ -1,0 +1,8 @@
+name = "ConFixAgent"
+area = "concurrency"
+paper = "https://arxiv.org/abs/2604.05753"
+repo_url = "TODO"
+commit = "TODO"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "todo"   # todo | pinned | reproduced | adapted
+role = "SHB-based concurrency context extraction + repair; primary concurrency baseline."

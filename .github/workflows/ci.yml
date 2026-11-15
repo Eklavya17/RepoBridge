@@ -1,0 +1,18 @@
+name: ci
+on:
+  push:
+    branches: [main, "task/**", "core/**"]
+  pull_request:
+    branches: [main, "task/**"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: pytest -q
+      - run: python scripts/fetch_prior_work.py --dry-run

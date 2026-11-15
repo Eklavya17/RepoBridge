@@ -1,0 +1,5 @@
+# C2: + L3 budgeted bundle with placement policy  (docs/evaluation.md §1)
+run = "C2"
+model = "qwen3-coder"
+temperature = 0.0
+token_budget = 0      # TODO: fix one total budget for all runs

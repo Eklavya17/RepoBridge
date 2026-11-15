@@ -1,0 +1,5 @@
+# C6: + strategy memory and ghost hints  (docs/evaluation.md §1)
+run = "C6"
+model = "qwen3-coder"
+temperature = 0.0
+token_budget = 0      # TODO: fix one total budget for all runs

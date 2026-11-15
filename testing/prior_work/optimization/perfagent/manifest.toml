@@ -1,0 +1,8 @@
+name = "PerfAgent"
+area = "optimization"
+paper = "https://arxiv.org/abs/2607.19653"
+repo_url = "TODO"
+commit = "TODO"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "todo"   # todo | pinned | reproduced | adapted
+role = "Profiler-guided iterative refinement; primary optimization baseline."

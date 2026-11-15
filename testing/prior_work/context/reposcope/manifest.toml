@@ -1,0 +1,8 @@
+name = "RepoScope"
+area = "context"
+paper = "https://arxiv.org/abs/2507.14791"
+repo_url = "TODO"
+commit = "TODO"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "todo"   # todo | pinned | reproduced | adapted
+role = "Call-chain-aware multi-view retrieval and structure-preserving serialization (L3)."

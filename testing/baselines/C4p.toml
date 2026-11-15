@@ -1,0 +1,5 @@
+# C4p: C4 but scouts exchange natural-language summaries  (docs/evaluation.md §1)
+run = "C4p"
+model = "qwen3-coder"
+temperature = 0.0
+token_budget = 0      # TODO: fix one total budget for all runs

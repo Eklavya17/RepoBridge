@@ -1,0 +1,8 @@
+name = "PracRepair"
+area = "debugging"
+paper = "TODO"
+repo_url = "TODO"
+commit = "TODO"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "todo"   # todo | pinned | reproduced | adapted
+role = "Execution-aware diagnosis and repair using runtime traces."

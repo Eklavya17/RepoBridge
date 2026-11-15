@@ -1,0 +1,8 @@
+name = "OpenHands"
+area = "debugging"
+paper = "https://arxiv.org/abs/2407.16741"
+repo_url = "https://github.com/OpenHands/OpenHands"
+commit = "c255de902b5f3dccc81b73cf5ca6a17cb1d6594b"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "pinned"   # todo | pinned | reproduced | adapted
+role = "General coding-agent platform baseline."

@@ -1,0 +1,5 @@
+# Local open-weight models served through Ollama (midterm report §4.3).
+host = "http://localhost:11434"
+default = "qwen3-coder"
+candidates = ["qwen3-coder", "devstral", "qwen3-coder-next"]
+temperature = 0.0

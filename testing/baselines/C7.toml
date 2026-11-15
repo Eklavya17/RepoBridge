@@ -1,0 +1,5 @@
+# C7: best of C0-C6 over NLIP transport  (docs/evaluation.md §1)
+run = "C7"
+model = "qwen3-coder"
+temperature = 0.0
+token_budget = 0      # TODO: fix one total budget for all runs

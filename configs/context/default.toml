@@ -1,0 +1,19 @@
+# Context-engine defaults (docs/context_management.md). Tuned during Stage C.
+[expansion]
+max_depth = 3
+max_nodes = 200
+
+[bundle]
+token_budget = 6000
+placement = "anchor_first_question_last"
+split_instead_of_truncate = true
+
+[ledger]
+render_top_n_frontier = 10
+mask_observations = true
+
+[memory]
+reuse_min_status = "checked"
+strategy_alpha = 0.1
+ghost_hints_k = 3
+ghost_trigger_min_memory = 10

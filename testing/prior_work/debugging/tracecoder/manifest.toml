@@ -1,0 +1,8 @@
+name = "TraceCoder"
+area = "debugging"
+paper = "https://arxiv.org/abs/2602.06875"
+repo_url = "TODO"
+commit = "TODO"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "todo"   # todo | pinned | reproduced | adapted
+role = "Trace-driven multi-agent debugging with lessons from failed attempts."

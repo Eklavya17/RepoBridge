@@ -1,0 +1,5 @@
+# C1: + L1 graph expansion  (docs/evaluation.md §1)
+run = "C1"
+model = "qwen3-coder"
+temperature = 0.0
+token_budget = 0      # TODO: fix one total budget for all runs

@@ -1,0 +1,8 @@
+name = "ACE (Agentic Context Engineering)"
+area = "context"
+paper = "https://arxiv.org/abs/2510.04618"
+repo_url = "https://github.com/ace-agent/ace"
+commit = "82709de050e1db6e6ef2f07bcb0393560b94992a"
+license = "TODO: check upstream LICENSE before running or redistributing"
+status = "pinned"   # todo | pinned | reproduced | adapted
+role = "Generator/Reflector/Curator with delta-entry context updates (L2 cycle compression)."

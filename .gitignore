@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Local settings / secrets
+.env
+
+# Upstream clones and generated outputs
+testing/prior_work/_upstream/*
+!testing/prior_work/_upstream/.gitkeep
+testing/results/*
+!testing/results/.gitkeep
+*.sqlite
+*.db
+
+# Editors / OS
+.vscode/
+.idea/
+.obsidian/
+.DS_Store
+Thumbs.db

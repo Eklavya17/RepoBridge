@@ -1,0 +1,25 @@
+# Benchmarks for concurrency. Pin a version and an explicit task subset before running.
+
+[[benchmark]]
+name = "spaghetti-bench"
+source = "https://github.com/cmu-pasta/spaghetti-bench"
+version = "62a1cfe9085bc553b3c86c5e117690ed7b918c9f"
+subset = []   # explicit task IDs; never "all" silently
+
+[[benchmark]]
+name = "sctbench"
+source = "TODO"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently
+
+[[benchmark]]
+name = "convul"
+source = "TODO"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently
+
+[[benchmark]]
+name = "racebench"
+source = "TODO"
+version = "TODO"
+subset = []   # explicit task IDs; never "all" silently
