@@ -1,4 +1,3 @@
-"""NLIP (ECMA-430) message mapping for work orders and findings.
-
-Implemented in build stage E (docs/context_management.md §6).
+"""NLIP (ECMA-430) binding: ``codec`` maps envelopes to NLIP messages and ``http`` serves and
+calls them over HTTP using ``nlip_sdk`` / ``nlip_server``. Install with ``pip install -e .[nlip]``.
 """
