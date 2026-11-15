@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.ghost_hint/v1",
+  "title": "GhostHint",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.ghost_hint/v1"
+    },
+    "hint_id": {
+      "type": "string"
+    },
+    "source_investigation": {
+      "type": "string"
+    },
+    "situation_sig": {
+      "type": "string"
+    },
+    "strategy_id": {
+      "type": "string"
+    },
+    "ephemeral": {
+      "type": "boolean"
+    },
+    "outcome": {
+      "enum": [
+        "pending",
+        "confirmed",
+        "unused",
+        "contradicted"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "hint_id",
+    "source_investigation",
+    "situation_sig",
+    "strategy_id"
+  ],
+  "additionalProperties": false,
+  "description": "An unverified strategy transferred from a past investigation. Plan-only, never evidence."
+}

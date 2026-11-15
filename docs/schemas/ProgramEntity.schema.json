@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.program_entity/v1",
+  "title": "ProgramEntity",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.program_entity/v1"
+    },
+    "entity_id": {
+      "type": "string"
+    },
+    "snapshot": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "module",
+        "class",
+        "function",
+        "method",
+        "test",
+        "variable"
+      ]
+    },
+    "qualified_name": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "span": {
+      "type": "object",
+      "properties": {
+        "start_line": {
+          "type": "integer"
+        },
+        "end_line": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start_line",
+        "end_line"
+      ],
+      "additionalProperties": false,
+      "description": "Inclusive 1-based line range."
+    },
+    "fingerprint": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "entity_id",
+    "snapshot",
+    "kind",
+    "qualified_name",
+    "path",
+    "span",
+    "fingerprint"
+  ],
+  "additionalProperties": false,
+  "description": "A program element at one repository snapshot."
+}

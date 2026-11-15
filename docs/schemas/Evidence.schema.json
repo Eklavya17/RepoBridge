@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.evidence/v1",
+  "title": "Evidence",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.evidence/v1"
+    },
+    "evidence_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "entity_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact_ref": {
+      "type": "string"
+    },
+    "digest": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "checked",
+        "observed",
+        "reproduced",
+        "regression_checked",
+        "refuted"
+      ]
+    },
+    "snapshot": {
+      "type": "string"
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "evidence_id",
+    "task_id",
+    "entity_ids",
+    "artifact_ref",
+    "digest",
+    "producer",
+    "status",
+    "snapshot"
+  ],
+  "additionalProperties": false,
+  "description": "An artifact (span, trace, profile, test result, ...) stored once and passed by ID."
+}

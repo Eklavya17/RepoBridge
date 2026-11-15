@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.context_bundle/v1",
+  "title": "ContextBundle",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.context_bundle/v1"
+    },
+    "bundle_id": {
+      "type": "string"
+    },
+    "order_id": {
+      "type": "string"
+    },
+    "token_budget": {
+      "type": "integer"
+    },
+    "snapshot": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ref": {
+            "type": "string"
+          },
+          "fidelity": {
+            "enum": [
+              "full",
+              "signature",
+              "summary",
+              "reference"
+            ]
+          },
+          "role": {
+            "enum": [
+              "anchor",
+              "essential",
+              "supporting",
+              "test",
+              "constraint"
+            ]
+          },
+          "tokens": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "ref",
+          "fidelity",
+          "role",
+          "tokens"
+        ],
+        "additionalProperties": false,
+        "description": "BundleItem(ref: str, fidelity: repobridge.core.schemas.Fidelity, role: repobridge.core.schemas.ItemRole, tokens: int)"
+      }
+    },
+    "excluded": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "missing_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "bundle_id",
+    "order_id",
+    "token_budget",
+    "snapshot",
+    "items"
+  ],
+  "additionalProperties": false,
+  "description": "The ordered, budgeted context handed to one scout."
+}

@@ -1,4 +1,7 @@
-"""Agent-to-agent transport: plain in-process JSON (reference) and NLIP adapter (measured separately, run C7).
+"""Agent-to-agent communication (docs/communication.md).
 
-Implemented in build stage E (docs/context_management.md §6).
+- ``envelope``: the transport-neutral ``Envelope`` and ``MessageKind``
+- ``transport``: the ``Transport`` interface, ``TransportStats`` and the reference
+  ``InProcessJSONTransport``
+- ``nlip``: NLIP (ECMA-430) codec and HTTP transport (needs the ``nlip`` extra)
 """

@@ -40,3 +40,5 @@ Each entry is grouped by role. "Repo" links were checked with `git ls-remote` on
 
 ## Communication
 - **NLIP / ECMA-430**: https://github.com/nlip-project
+- **nlip_sdk** 0.1.3 (message models): https://github.com/nlip-project/nlip_sdk (Apache-2.0)
+- **nlip_server** 0.1.3 (FastAPI server): https://github.com/nlip-project/nlip_server (Apache-2.0)

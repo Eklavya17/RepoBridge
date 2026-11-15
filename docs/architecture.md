@@ -24,7 +24,7 @@ profile / race ─────────────────────�
 | `context/` | L3 | Anchors, expansion, bundle builder, fusion, observation masking |
 | `memory/` | L2/L4 | Evidence store, ledger, summaries, strategy memory, ghost hints, lessons |
 | `agents/` | L3/L5 | Coordinator, scouts, acceptance gate |
-| `communication/` | — | Plain JSON transport; NLIP adapter (measured separately) |
+| `communication/` | — | Envelopes, plain JSON transport, NLIP codec + HTTP transport (see `communication.md`) |
 | `tools/` | — | Tool functions exposed to agents; MCP server stubs |
 | `tasks/<area>/` | plug-in | Anchors, question kinds, overlay, verifier hook for each area |
 | `verification/` | — | Test, benchmark and controlled-schedule runners |

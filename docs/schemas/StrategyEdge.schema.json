@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.strategy_edge/v1",
+  "title": "StrategyEdge",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.strategy_edge/v1"
+    },
+    "strategy_id": {
+      "type": "string"
+    },
+    "situation_sig": {
+      "type": "string"
+    },
+    "strategy": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "integer"
+        },
+        "localized_rate": {
+          "type": "number"
+        },
+        "mean_tokens": {
+          "type": "number"
+        },
+        "mean_steps": {
+          "type": "number"
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "description": "StrategyStats(n: int = 0, localized_rate: float = 0.0, mean_tokens: float = 0.0, mean_steps: float = 0.0)"
+    }
+  },
+  "required": [
+    "schema",
+    "strategy_id",
+    "situation_sig",
+    "strategy"
+  ],
+  "additionalProperties": false,
+  "description": "Strategy memory: in a situation like this, this tool sequence worked this well."
+}

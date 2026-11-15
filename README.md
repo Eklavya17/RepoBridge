@@ -18,7 +18,10 @@ RepoBridge studies whether careful **context management** can help LLM agents wi
 2. [`docs/contracts.md`](docs/contracts.md): the data contracts frozen in Stage A.
 3. [`docs/evaluation.md`](docs/evaluation.md): context-only ladder C0–C7 and per-area evaluation.
 4. [`docs/branching.md`](docs/branching.md): how `main` and the `task/*` branches work.
-5. [`testing/README.md`](testing/README.md): earlier systems, benchmarks and fixtures.
+5. [`docs/communication.md`](docs/communication.md): envelopes, plain JSON and NLIP transports.
+6. [`testing/README.md`](testing/README.md): earlier systems, benchmarks and fixtures.
+
+Try it: `uv run python examples/nlip_handoff.py`.
 
 ## Setup
 

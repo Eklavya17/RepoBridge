@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.summary/v1",
+  "title": "Summary",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.summary/v1"
+    },
+    "summary_id": {
+      "type": "string"
+    },
+    "entity": {
+      "type": "string"
+    },
+    "slot": {
+      "type": "string"
+    },
+    "property": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "checked",
+        "observed",
+        "reproduced",
+        "regression_checked",
+        "refuted"
+      ]
+    },
+    "fingerprints": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "conditions": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "summary_id",
+    "entity",
+    "slot",
+    "property",
+    "status",
+    "fingerprints"
+  ],
+  "additionalProperties": false,
+  "description": "A reusable, revision-scoped contract for one (entity, slot, property). ``fingerprints`` maps every source entity the summary relies on (including ``entity`` itself) to its fingerprint when the summary was made; any change invalidates it."
+}
