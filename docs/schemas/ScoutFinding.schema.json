@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.scout_finding/v1",
+  "title": "ScoutFinding",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.scout_finding/v1"
+    },
+    "finding_id": {
+      "type": "string"
+    },
+    "order_id": {
+      "type": "string"
+    },
+    "claim": {
+      "type": "object",
+      "properties": {
+        "entity": {
+          "type": "string"
+        },
+        "slot": {
+          "type": "string"
+        },
+        "property": {
+          "type": "string"
+        },
+        "condition": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {}
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "entity",
+        "slot",
+        "property"
+      ],
+      "additionalProperties": false,
+      "description": "A property of one entity slot, optionally under a structured condition."
+    },
+    "cites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "checked",
+        "observed",
+        "reproduced",
+        "regression_checked",
+        "refuted"
+      ]
+    },
+    "needs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "enum": [
+              "slot_property",
+              "cost_property",
+              "access_property"
+            ]
+          },
+          "entity": {
+            "type": "string"
+          },
+          "slot": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "entity",
+          "slot",
+          "property"
+        ],
+        "additionalProperties": false,
+        "description": "One atomic question: one entity, one slot, one property."
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "finding_id",
+    "order_id",
+    "claim",
+    "cites",
+    "confidence"
+  ],
+  "additionalProperties": false,
+  "description": "A scout's answer: a claim with citations, plus follow-up questions it needs."
+}

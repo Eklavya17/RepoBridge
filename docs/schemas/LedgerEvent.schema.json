@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.ledger_event/v1",
+  "title": "LedgerEvent",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.ledger_event/v1"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "investigation_id": {
+      "type": "string"
+    },
+    "section": {
+      "enum": [
+        "postmortem",
+        "strategy",
+        "plan",
+        "execution"
+      ]
+    },
+    "type": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "string"
+    },
+    "ts": {
+      "type": "string"
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": {}
+    }
+  },
+  "required": [
+    "schema",
+    "event_id",
+    "investigation_id",
+    "section",
+    "type",
+    "producer",
+    "ts"
+  ],
+  "additionalProperties": false,
+  "description": "One append-only entry in an investigation ledger."
+}

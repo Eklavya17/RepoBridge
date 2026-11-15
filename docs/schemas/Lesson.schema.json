@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.lesson/v1",
+  "title": "Lesson",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.lesson/v1"
+    },
+    "lesson_id": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "refuted_hypothesis",
+        "rejected_patch"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "applies_when": {
+      "type": "string"
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "lesson_id",
+    "kind",
+    "reason",
+    "applies_when"
+  ],
+  "additionalProperties": false,
+  "description": "A refuted hypothesis or rejected patch, so later agents do not repeat it."
+}

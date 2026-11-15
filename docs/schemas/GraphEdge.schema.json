@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repobridge.graph_edge/v1",
+  "title": "GraphEdge",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "repobridge.graph_edge/v1"
+    },
+    "edge_id": {
+      "type": "string"
+    },
+    "src": {
+      "type": "string"
+    },
+    "dst": {
+      "type": "string"
+    },
+    "relation": {
+      "enum": [
+        "CONTAINS",
+        "IMPORTS",
+        "CALLS",
+        "INHERITS",
+        "DEF_USE",
+        "TESTS",
+        "ACCESSES",
+        "GUARDED_BY"
+      ]
+    },
+    "resolved": {
+      "type": "boolean"
+    },
+    "provenance": {
+      "enum": [
+        "static",
+        "observed",
+        "llm_inferred"
+      ]
+    },
+    "snapshot": {
+      "type": "string"
+    },
+    "attrs": {
+      "type": "object",
+      "additionalProperties": {}
+    }
+  },
+  "required": [
+    "schema",
+    "edge_id",
+    "src",
+    "dst",
+    "relation",
+    "resolved",
+    "provenance",
+    "snapshot"
+  ],
+  "additionalProperties": false,
+  "description": "A directed relation between entities. Unresolved calls/imports point at ``unresolved:<name>`` instead of guessing a target."
+}

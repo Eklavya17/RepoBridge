@@ -9,3 +9,9 @@ Small synthetic repositories with **known ground truth**, used for the context-o
 
 First fixture to build (Stage B): a cross-file None-propagation bug where the crash site and the
 root cause are more than 4 calls apart.
+
+## Available fixtures
+
+- `toy_investigation/records.jsonl`: one record of every contract for the empty-config crash
+  (Stage A). Regenerate with `python -m tests.toy_investigation`; validate with
+  `repobridge validate testing/fixtures/toy_investigation/records.jsonl`.

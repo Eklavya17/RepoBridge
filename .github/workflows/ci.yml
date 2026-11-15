@@ -15,4 +15,6 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check .
       - run: pytest -q
+      - run: repobridge schemas --check docs/schemas
+      - run: repobridge validate testing/fixtures/toy_investigation/records.jsonl
       - run: python scripts/fetch_prior_work.py --dry-run
