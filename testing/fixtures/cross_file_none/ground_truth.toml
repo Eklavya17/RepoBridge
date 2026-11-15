@@ -1,0 +1,144 @@
+# Ground truth for the cross-file None-propagation fixture (Stage B, debugging-first).
+#
+# Bug: a settings text without a "discount" key makes shop.discount.lookup_rate return None.
+# The None travels through resolve_rate -> total_price and crashes in apply_rate. The crash site
+# is far from the root cause, and the test-to-parser call chain is 5 hops (> RepoAudit's K = 4).
+#
+# Everything below is what *static* analysis of repo/ should report. Lines in [[slices]] are
+# stripped source lines, so the file can be edited without renumbering.
+#
+# Known static blind spots, kept on purpose:
+# - `hook(result)` calls a loop variable, and `settings.get(...)` calls a method on a parameter:
+#   both must be reported as unresolved, not guessed.
+# - TestEngine.test_quote calls `.quote` on a constructor result, which is unresolved, so that
+#   test does not statically reach apply_rate.
+# - shop/legacy_pricing.py looks textually similar to the crash site but is not connected.
+
+required_entities = [
+    "shop.pricing.apply_rate",
+    "shop.pricing.total_price",
+    "shop.discount.resolve_rate",
+    "shop.discount.lookup_rate",
+    "shop.config.load",
+    "shop.config.parse",
+    "shop.checkout.run_checkout",
+    "tests.test_checkout.test_checkout_without_discount",
+]
+
+[task]
+test = "tests.test_checkout.test_checkout_without_discount"
+error = "TypeError: unsupported operand type(s) for -: 'int' and 'NoneType'"
+crash_site = "shop.pricing.apply_rate"
+
+[root_cause]
+entity = "shop.discount.lookup_rate"
+slot = "return"
+property = "may_be_none"
+
+[counts]
+modules = 7
+classes = 4
+tests = 3
+
+[callers]
+"shop.pricing.apply_rate" = ["shop.pricing.total_price"]
+"shop.pricing.total_price" = ["shop.checkout.run_checkout", "shop.pricing.PriceEngine.quote"]
+"shop.discount.lookup_rate" = ["shop.discount.resolve_rate"]
+"shop.discount.resolve_rate" = ["shop.pricing.total_price"]
+"shop.config.parse" = ["shop.config.load"]
+"shop.checkout.run_checkout" = [
+    "tests.test_checkout.test_checkout_with_discount",
+    "tests.test_checkout.test_checkout_without_discount",
+]
+"shop.discount.BasePolicy.default_rate" = ["shop.discount.SeasonalPolicy.rate_for"]
+"shop.pricing.PriceEngine.quote" = ["shop.pricing.PriceEngine.quote_with_hooks"]
+"shop.legacy_pricing.apply_rate_legacy" = []
+
+[callees]
+"shop.pricing.total_price" = [
+    "shop.discount.resolve_rate",
+    "shop.pricing.apply_rate",
+    "shop.pricing.subtotal",
+]
+"shop.discount.resolve_rate" = ["shop.config.load", "shop.discount.lookup_rate"]
+"shop.config.load" = ["shop.config.parse"]
+"shop.pricing.apply_rate" = []
+"shop.pricing.PriceEngine.__init__" = ["shop.discount.SeasonalPolicy"]
+"shop.pricing.PriceEngine.quote_with_hooks" = ["shop.pricing.PriceEngine.quote"]
+"tests.test_checkout.TestEngine.test_quote" = ["shop.pricing.PriceEngine.__init__"]
+
+[unresolved_callees]
+"shop.discount.lookup_rate" = ["settings.get"]
+"shop.config.parse" = ["json.loads", "text.strip"]
+"shop.pricing.PriceEngine.quote_with_hooks" = ["hook"]
+"tests.test_checkout.TestEngine.test_quote" = ["PriceEngine().quote"]
+
+[imports]
+"shop" = ["shop.pricing"]
+"shop.discount" = ["shop.config"]
+"shop.pricing" = ["shop.discount"]
+"shop.checkout" = ["shop.pricing"]
+"tests.test_checkout" = ["shop.checkout", "shop.pricing"]
+
+[inherits]
+"shop.discount.SeasonalPolicy" = ["shop.discount.BasePolicy"]
+
+[tests_for]
+"shop.pricing.apply_rate" = [
+    "tests.test_checkout.test_checkout_with_discount",
+    "tests.test_checkout.test_checkout_without_discount",
+]
+"shop.pricing.PriceEngine.__init__" = ["tests.test_checkout.TestEngine.test_quote"]
+
+[[chains]]
+src = "tests.test_checkout.test_checkout_without_discount"
+dst = "shop.config.parse"
+paths = [[
+    "tests.test_checkout.test_checkout_without_discount",
+    "shop.checkout.run_checkout",
+    "shop.pricing.total_price",
+    "shop.discount.resolve_rate",
+    "shop.config.load",
+    "shop.config.parse",
+]]
+
+[[chains]]
+src = "tests.test_checkout.test_checkout_without_discount"
+dst = "shop.pricing.apply_rate"
+paths = [[
+    "tests.test_checkout.test_checkout_without_discount",
+    "shop.checkout.run_checkout",
+    "shop.pricing.total_price",
+    "shop.pricing.apply_rate",
+]]
+
+[[chains]]
+src = "shop.pricing.apply_rate"
+dst = "shop.config.parse"
+paths = []
+
+[[slices]]
+entity = "shop.pricing.total_price"
+criterion = "rate"
+lines = ["def total_price(items, settings_text):", "rate = discount.resolve_rate(settings_text)"]
+params = ["settings_text"]
+calls = ["shop.discount.resolve_rate"]
+
+[[slices]]
+entity = "shop.discount.lookup_rate"
+criterion = "return"
+lines = ["def lookup_rate(settings):", "return settings.get(\"discount\")"]
+params = ["settings"]
+calls = []
+
+[[slices]]
+entity = "shop.config.parse"
+criterion = "return"
+lines = ["def parse(text):", "if not text.strip():", "return {}", "return json.loads(text)"]
+params = ["text"]
+calls = []
+
+[[not_connected]]
+entity = "shop.pricing.apply_rate"
+decoy = "shop.legacy_pricing.apply_rate_legacy"
+k = 3
