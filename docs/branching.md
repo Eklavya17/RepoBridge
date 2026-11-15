@@ -18,17 +18,16 @@ core/<topic>, docs/<topic>, testing/<topic>: short-lived, branched from main, me
    - `src/repobridge/tasks/<area>/`
    - `testing/prior_work/<area>/`
    - `testing/benchmarks/<area>/`
+   - `testing/fixtures/<area>_*/`
    - `configs/experiments/<area>*`
+   - `docs/results/<area>/` (through `docs/*` PRs)
 3. **No core edits on a task branch.** If an area needs a core change, open a `core/<topic>` PR to `main`, then merge `main` back into the task branch.
-4. **Sync:** merge `main` into each task branch weekly, and after every core PR. Merge, don't rebase, since the branches are shared.
-5. **Results** from a task branch (tables, plots) go in `docs/results/<area>/` through a `docs/*` PR to `main`. Raw outputs stay in the gitignored `testing/results/`.
-6. **Commit messages** start with the area: `core:`, `debugging:`, `optimization:`, `concurrency:`, `testing:`, `docs:`.
+4. **Topic branches** use `<area>/<topic>` (e.g. `debugging/trace-overlay`) and merge into `task/<area>`. Git can't create `task/debugging/<topic>` while `task/debugging` exists.
+5. **New dependencies** for one area go in an optional extra named after it (e.g. `optimization = [...]` in `pyproject.toml`), through a small PR to `main`.
+6. **Sync:** merge `main` into each task branch weekly, and after every core PR. Merge, don't rebase, since the branches are shared.
+7. **Results** from a task branch (tables, plots) go in `docs/results/<area>/` through a `docs/*` PR to `main`. Raw outputs stay in the gitignored `testing/results/`.
+8. **Commit messages** start with the area: `core:`, `debugging:`, `optimization:`, `concurrency:`, `testing:`, `docs:`.
 
-## Suggested owners (edit as the team decides)
+## Owners
 
-| Branch | Owner |
-|---|---|
-| `main` / core | all (review by at least one other member) |
-| `task/debugging` | TBD |
-| `task/optimization` | TBD |
-| `task/concurrency` | TBD |
+Who owns what, the reading list and the work packages for each area are in [`team_guide.md`](team_guide.md).
