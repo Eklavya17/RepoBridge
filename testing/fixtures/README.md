@@ -4,14 +4,17 @@ Small synthetic repositories with **known ground truth**, used for the context-o
 (C0-C6) before real benchmarks. Each fixture folder contains:
 
 - `repo/`: the source tree
-- `task.toml`: the issue / anchor (failing test, stack trace, profile frame or race report)
-- `ground_truth.toml`: required entities, required call paths, the expected root cause
+- `ground_truth.toml`: the task (anchor, error), the root cause, and the exact expected graph
+  answers (callers, callees, unresolved calls, chains, tests, slices, decoys)
 
-First fixture to build (Stage B): a cross-file None-propagation bug where the crash site and the
-root cause are more than 4 calls apart.
+Fixture order: debugging first (`cross_file_none`), then optimization and concurrency fixtures
+on their task branches.
 
 ## Available fixtures
 
 - `toy_investigation/records.jsonl`: one record of every contract for the empty-config crash
   (Stage A). Regenerate with `python -m tests.toy_investigation`; validate with
   `repobridge validate testing/fixtures/toy_investigation/records.jsonl`.
+- `cross_file_none/`: debugging fixture for Stage B. A missing `discount` key makes
+  `lookup_rate` return None, which crashes in `apply_rate`; the test-to-parser chain is 5 hops,
+  and `legacy_pricing.py` is a text-similar decoy. Checked by `tests/unit/test_graph.py`.

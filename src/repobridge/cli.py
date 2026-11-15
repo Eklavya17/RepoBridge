@@ -4,7 +4,9 @@ repobridge schemas                      list contracts and their schema versions
 repobridge schemas --export docs/schemas   write JSON Schema files
 repobridge schemas --check  docs/schemas   fail if the committed schemas are stale
 repobridge validate FILE                validate a .json / .jsonl file of records
-repobridge index | query | bundle       arrive in Stages B-C
+repobridge index PATH                   index a Python repository into the graph (Stage B)
+repobridge query callers|callees|chains|tests|ego|slice|find|stats ...   query the graph
+repobridge bundle                       arrives in Stage C
 """
 
 import argparse
@@ -168,9 +170,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("file")
     p.set_defaults(func=cmd_validate)
 
+    from repobridge.graph.cli import add_graph_commands
+
+    add_graph_commands(sub)
+
     for name, stage, help_ in [
-        ("index", "B", "index a repository into the graph"),
-        ("query", "B", "query callers/callees/chains"),
         ("bundle", "C", "build a context bundle for a question"),
     ]:
         p = sub.add_parser(name, help=f"{help_} (Stage {stage})")

@@ -244,5 +244,5 @@ def test_committed_json_schemas_are_current(capsys):
 
 
 def test_later_stage_commands_say_so(capsys):
-    assert cli.main(["index"]) == 2
-    assert "Stage B" in capsys.readouterr().err
+    assert cli.main(["bundle"]) == 2
+    assert "Stage C" in capsys.readouterr().err

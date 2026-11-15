@@ -11,6 +11,9 @@ dist/
 # Local settings / secrets
 .env
 
+# Local graph databases (repobridge index)
+.repobridge/
+
 # Upstream clones and generated outputs
 testing/prior_work/_upstream/*
 !testing/prior_work/_upstream/.gitkeep

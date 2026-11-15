@@ -137,7 +137,7 @@ Each area lives on its `task/<area>` branch and must not change L1–L5. Changes
 | Stage | Build | Done when |
 |---|---|---|
 | A ✅ | Contracts (`core/schemas.py`, `core/rules.py`) + CLI | Schemas and unit tests pass; the toy investigation (`testing/fixtures/toy_investigation/`) validates |
-| B | L1 graph | Exact caller/callee queries pass on `testing/fixtures` |
+| B ✅ | L1 graph (`docs/graph.md`) | Exact caller/callee, chain, test and slice queries match `testing/fixtures/cross_file_none/ground_truth.toml` |
 | C | L3 bundle builder + baselines C0–C2 | Recall and token numbers on fixtures |
 | D | L2 ledger, prompt rebuild, masking (C3) | A second agent reuses evidence without searching again |
 | E | Two scouts + L5 gate (C4) | Typed handoff and retry tests pass |
